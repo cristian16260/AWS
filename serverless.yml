@@ -4,24 +4,19 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs18.x
+  stage: dev
+  region: us-east-1
 
 functions:
-  api:
-    handler: src/index.handler
+  sayMyName:
+    handler: src/index.sayMyName
     events:
       - httpApi:
-          path: /
-          method: get
-    getConvert:
-    handler: src/convert.convert
+          path: /sayMyName
+          method: post
+  convertCoins:
+    handler: src/index.convertCoins
     events:
       - httpApi:
-          path: /
-          method: get
-    getTranslate:
-    handler: src/translate.translate
-    events: 
-      - httaApi:
-          path: /
-          method: get
-
+          path: /convertCoins
+          method: post
