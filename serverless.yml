@@ -1,0 +1,27 @@
+service: AWS-gateway
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  api:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+    getConvert:
+    handler: src/convert.convert
+    events:
+      - httpApi:
+          path: /
+          method: get
+    getTranslate:
+    handler: src/translate.translate
+    events: 
+      - httaApi:
+          path: /
+          method: get
+
